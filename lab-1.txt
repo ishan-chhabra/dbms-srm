@@ -1,0 +1,91 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\user>C:\app\Admin\product\11.2.0\dbhome_1\BIN\sqlplus.exe
+
+SQL*Plus: Release 11.2.0.1.0 Production on Mon Jul 22 13:49:43 2019
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: RA1711003010009@csedb
+Enter password:
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> create table department(sno int, sname varchar2(10),m1 int,m2 int);
+
+Table created.
+
+SQL> insert into department values(1,'Ishan',90,85);
+
+1 row created.
+
+SQL> insert into department values (2,'Anubhav',95,86);
+
+1 row created.
+
+SQL> insert into department values(3,'Srinath',90,80);
+
+1 row created.
+
+SQL> insert into department values(4,'ritesh',100,100);
+
+1 row created.
+
+SQL> select * from department;
+
+       SNO SNAME              M1         M2
+---------- ---------- ---------- ----------
+         1 Ishan              90         85
+         2 Anubhav            95         86
+         3 Srinath            90         80
+         4 ritesh            100        100
+
+SQL> delete from department where m1=100;
+
+1 row deleted.
+
+SQL> select * from department;
+
+       SNO SNAME              M1         M2
+---------- ---------- ---------- ----------
+         1 Ishan              90         85
+         2 Anubhav            95         86
+         3 Srinath            90         80
+
+SQL> desc department;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+
+ SNO                                                NUMBER(38)
+ SNAME                                              VARCHAR2(10)
+ M1                                                 NUMBER(38)
+ M2                                                 NUMBER(38)
+
+SQL> update department set sno=4 where m1=75;
+
+0 rows updated.
+
+SQL> select * from department;
+
+       SNO SNAME              M1         M2
+---------- ---------- ---------- ----------
+         1 Ishan              90         85
+         2 Anubhav            95         86
+         3 Srinath            90         80
+
+SQL> alter table department add (total int);
+
+Table altered.
+
+SQL> truncate table department;
+
+Table truncated.
+
+SQL> drop table department;
+
+Table dropped.
+
+SQL>

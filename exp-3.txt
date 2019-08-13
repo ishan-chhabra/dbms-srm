@@ -1,0 +1,107 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\user>C:\app\Admin\product\11.2.0\dbhome_1\BIN\sqlplus.exe
+
+SQL*Plus: Release 11.2.0.1.0 Production on Mon Aug 12 19:46:20 2019
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: RA1711003010009@csedb
+Enter password:
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> create table Student(roll_no int, name varchar2(20), phone int, age int);
+
+Table created.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+
+ ROLL_NO                                            NUMBER(38)
+ NAME                                               VARCHAR2(20)
+ PHONE                                              NUMBER(38)
+ AGE                                                NUMBER(38)
+
+SQL> insert into Student values(1, 'HARSH', 9991119191, 20);
+
+1 row created.
+
+SQL> insert into Student values(2, 'PRATIK', 8811919123, 19);
+
+1 row created.
+
+SQL> insert into Student values(3, 'RIYANkA', 8817215575, 20);
+
+1 row created.
+
+SQL> insert into Student values(4, 'DEEP', 9922881122, 21);
+
+1 row created.
+
+SQL> select * from Student;
+
+   ROLL_NO NAME                      PHONE        AGE
+---------- -------------------- ---------- ----------
+         1 HARSH                9991119191         20
+         2 PRATIK               8811919123         19
+         3 RIYANkA              8817215575         20
+         4 DEEP                 9922881122         21
+
+SQL> create table StudentCourse(course_id int, roll_no int);
+
+Table created.
+
+SQL> desc StudentCourse;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+
+ COURSE_ID                                          NUMBER(38)
+ ROLL_NO                                            NUMBER(38)
+
+SQL> insert into StudentCourse values(1,1);
+
+1 row created.
+
+SQL> insert into StudentCourse values(2,2);
+
+1 row created.
+
+SQL> insert into StudentCourse values(2,3);
+
+1 row created.
+
+SQL> insert into StudentCourse values(3,4);
+
+1 row created.
+
+SQL> insert into StudentCourse values(5,10);
+
+1 row created.
+
+SQL> select * from StudentCourse;
+
+ COURSE_ID    ROLL_NO
+---------- ----------
+         1          1
+         2          2
+         2          3
+         3          4
+         5         10
+
+SQL> SELECT StudentCourse.course_id, Student.name, Student.age FROM Student
+  2  INNER JOIN StudentCourse
+  3  ON Student.roll_no = StudentCourse.roll_no;
+
+ COURSE_ID NAME                        AGE
+---------- -------------------- ----------
+         1 HARSH                        20
+         2 PRATIK                       19
+         2 RIYANkA                      20
+         3 DEEP                         21
+
+SQL>

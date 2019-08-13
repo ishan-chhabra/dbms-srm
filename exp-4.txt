@@ -104,4 +104,39 @@ SQL> SELECT StudentCourse.course_id, Student.name, Student.age FROM Student
          2 RIYANkA                      20
          3 DEEP                         21
 
+SQL> SELECT StudentCourse.course_id, Student.name, Student.age FROM Student
+  2  LEFT JOIN StudentCourse
+  3  ON Student.roll_no = StudentCourse.roll_no;
+
+ COURSE_ID NAME                        AGE
+---------- -------------------- ----------
+         1 HARSH                        20
+         2 PRATIK                       19
+         2 RIYANkA                      20
+         3 DEEP                         21
+
+SQL> SELECT StudentCourse.course_id, Student.name, Student.age FROM Student
+  2  RIGHT JOIN StudentCourse
+  3  ON Student.roll_no = StudentCourse.roll_no;
+
+ COURSE_ID NAME                        AGE
+---------- -------------------- ----------
+         1 HARSH                        20
+         2 PRATIK                       19
+         2 RIYANkA                      20
+         3 DEEP                         21
+         5
+
+SQL> SELECT StudentCourse.course_id, Student.name, Student.age FROM Student
+  2  FULL JOIN StudentCourse
+  3  ON Student.roll_no = StudentCourse.roll_no;
+
+ COURSE_ID NAME                        AGE
+---------- -------------------- ----------
+         1 HARSH                        20
+         2 PRATIK                       19
+         2 RIYANkA                      20
+         3 DEEP                         21
+         5
+
 SQL>

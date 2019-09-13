@@ -1,0 +1,121 @@
+SQL*Plus: Release 11.2.0.1.0 Production on Thu Aug 29 00:59:47 2019
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: RA1711003010009@csedb
+Enter password:
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> select * from dept;
+
+    DEPTNO DNAME                LOC
+---------- -------------------- --------------------
+       101 CSE                  UB
+       102 ECE                  MU
+       103 Mech                 MU
+
+SQL> select * from tab;
+
+    ROLLNO     DEPTNO
+---------- ----------
+         1        101
+         2        102
+         3        103
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(38)
+ DNAME                                              VARCHAR2(20)
+ LOC                                                VARCHAR2(20)
+
+SQL> desc tab;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROLLNO                                    NOT NULL NUMBER(38)
+ DEPTNO                                             NUMBER(38)
+
+SQL> select count(*) from dept;
+
+  COUNT(*)
+----------
+         3
+
+SQL> select count(distinct deptno) from dept;
+
+COUNT(DISTINCTDEPTNO)
+---------------------
+                    3
+
+SQL> create table student (rollno int,sname varchar(20),deptno int,m1 int,m2 int);
+
+Table created.
+
+
+SQL> insert into student values(1,'Rahul',101,9,20);
+
+1 row created.
+
+SQL> insert into student values(2,'Samil',102,25,22);
+
+1 row created.
+
+SQL> insert into student values(3,'Nitesh',103,21,18);
+
+1 row created.
+
+SQL> select * from student;
+
+    ROLLNO SNAME                    DEPTNO         M1         M2
+---------- -------------------- ---------- ---------- ----------
+         1 Rahul                       101          9         20
+         2 Samil                       102         25         22
+         3 Nitesh                      103         21         18
+
+SQL> select count(*) from student;
+
+  COUNT(*)
+----------
+         3
+
+SQL> select avg(m1) from student;
+
+   AVG(M1)
+----------
+18.3333333
+
+SQL> select sum(m1) from student;
+
+   SUM(M1)
+----------
+        55
+
+SQL> select min(m1) from student;
+
+   MIN(M1)
+----------
+         9
+
+SQL> select max(m1) from student;
+
+   MAX(M1)
+----------
+        25
+
+
+SQL> select sname from student where rollno in(select rollno from tab where deptno=101);
+
+SNAME
+--------------------
+Rahul
+
+SQL> select sname from student where deptno in(select deptno from tab where rollno=2);
+
+SNAME
+--------------------
+Samil
+
+SQL>
